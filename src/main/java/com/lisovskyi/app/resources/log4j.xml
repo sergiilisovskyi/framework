@@ -9,25 +9,25 @@
 
 	<appender name="File" class="org.apache.log4j.FileAppender">
 		<param name="Threshold" value="INFO" />
-		<param name="File" value="target/webtest.log"/>
+		<param name="File" value="target/webtest.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d %-5p [%c{1}] %m %n" />
 		</layout>
 	</appender>
-	
+
 	<appender name="Async" class="org.apache.log4j.AsyncAppender">
 		<param name="Blocking" value="true" />
 		<appender-ref ref="Console" />
 		<appender-ref ref="File" />
-	</appender>	
-	
-    <category name="pl.webtest">  
-        <priority value="DEBUG" />  
-    </category>	
-	
+	</appender>
+
+	<category name="pl.webtest">
+		<priority value="DEBUG" />
+	</category>
+
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="Async" />
 	</root>
-	
+
 </log4j:configuration>

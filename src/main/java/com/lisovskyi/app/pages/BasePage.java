@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Page Object base class. It provides the base structure and properties for a
@@ -72,6 +73,15 @@ public class BasePage {
 		}catch(NoSuchElementException e) {
 			return false;
 		}
+	}
+	
+	public static <T extends BasePage> T getInstance(WebDriver webDriver, String url, Class<T> type) {
+		webDriver.get(url);
+	    return getInstance(webDriver, type);
+	}	
+
+	public static <T extends BasePage> T getInstance(WebDriver webDriver, Class<T> type) {
+	    return PageFactory.initElements(webDriver, type);
 	}
 
 }
